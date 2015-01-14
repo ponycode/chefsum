@@ -14,5 +14,17 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 			});
 		};
 
+		$scope.create = function() {
+			var recipe = new Recipes({
+				title: this.title
+			});
+			recipe.$save(function(response) {
+				$location.path('recipes/' + response._id);
+				$scope.title = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
 	}
 ]);
