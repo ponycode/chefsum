@@ -1,10 +1,18 @@
 'use strict';
 
-
-angular.module('core').controller('HomeController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipegroup', 
+angular.module('recipegroup').controller('RecipegroupController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipegroup', 
 	function( $scope, $stateParams, $location, Authentication, Recipegroup) {
-		// This provides Authentication context.
 		$scope.authentication = Authentication;
+
+		$scope.find = function() {
+			$scope.recipegroup = Recipegroup.query();
+		};
+
+		$scope.findOne = function() {
+			$scope.recipegroup = Recipegroup.get({
+				recipegroupId: $stateParams.recipegroupId
+			});
+		};
 
 		$scope.create = function() {
 			var recipegroup = new Recipegroup({
@@ -17,5 +25,6 @@ angular.module('core').controller('HomeController', ['$scope', '$stateParams', '
 				$scope.error = errorResponse.data.message;
 			});
 		};
+
 	}
 ]);
