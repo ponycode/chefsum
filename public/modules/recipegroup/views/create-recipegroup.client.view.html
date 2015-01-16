@@ -1,22 +1,22 @@
 <section data-ng-controller="RecipegroupController">
-    <div class="page-header">
-        <h1>New Recipe Group</h1>
-    </div>
+    
+    <form role="form" ng-submit="create()">
+          
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
 
-      <!-- Activity input -->
-  <form role="form" ng-submit="create()">
-    <div class="row">
-      <div class="input-group">
-        <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="What is your activity?" class="form-control">
-        <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Next">
-        </span>
-      </div>
-    </div>
-
-    <!-- Activities list -->
-<!--     <p class="form-group" ng-repeat="recipegroup in recipegroups">
-      <input type="text" ng-model="recipegroup" class="form-control">
-    </p>
- -->  </form>
+                <br/><br/><br/><br/>
+                
+                <div class="input-group input-group-lg">
+                    <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Enter a name for your list" class="form-control">
+                    <span class="input-group-btn">
+                        <input type="submit" class="btn btn-primary" value="Next">
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+    
+    </form>
+    
 </section>

@@ -10,7 +10,7 @@ angular.module('recipegroup').config(['$stateProvider',
 			templateUrl: 'modules/recipegroup/views/recipegroup.client.view.html'
 		}).
 		state('create-recipegroup', {
-			url: '/create-recipegroup',
+			url: '/getStarted',
 			templateUrl: 'modules/recipegroup/views/create-recipegroup.client.view.html'
 		}).
 		state('recipegroup', {
