@@ -1,22 +1,53 @@
 <section data-ng-controller="RecipegroupController" data-ng-init="findOne()">
+    
     <div class="page-header">
         <h1 data-ng-bind="recipegroup.title"></h1>
     </div>
-    <div class="pull-right" data-ng-show="authentication.user._id == recipegroup.owner._id">
-        <a class="btn btn-primary" href="/#!/articles/{{recipe._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn btn-primary" data-ng-click="remove();">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
+    
+    <!--<div class="pull-right" data-ng-show="authentication.user._id == recipegroup.owner._id">-->
+        <!--<a class="btn btn-primary" href="/#!/articles/{{recipe._id}}/edit">-->
+            <!--<i class="glyphicon glyphicon-edit"></i>-->
+        <!--</a>-->
+        <!--<a class="btn btn-primary" data-ng-click="remove();">-->
+            <!--<i class="glyphicon glyphicon-trash"></i>-->
+        <!--</a>-->
+    <!--</div>-->
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Recipes</h3>
+            
+            <ul class="recipes>
+                <li ng-repeat="recipe in recipegroup.recipes">
+                    <span>{{recipe.name}}</span>
+                </li>
+            </ul>
+
+            <div class="input-group input-group-lg">
+                <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Enter a name for your first recipe" class="form-control" />
+                <span class="input-group-btn">
+                    <input data-ng-click="addRecipe();" type="button" class="btn btn-primary" value="Add Recipe">
+                </span>
+            </div>
+    
+        </div>
     </div>
-    <small>
-        <em class="text-muted">
-            Posted on
-            <span data-ng-bind="recipegroup.created | date:'mediumDate'"></span>
-            by
-            <span data-ng-bind="recipegroup.owner.displayName"></span>
-        </em>
-    </small>
-    <p class="lead" data-ng-bind="recipegroup.content"></p>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <br/><br/><br/>
+            <h3>Shopping List</h3>
+            <hr />
+        </div>
+    </div>
+
+    <!--<small>-->
+        <!--<em class="text-muted">-->
+            <!--Posted on-->
+            <!--<span data-ng-bind="recipegroup.created | date:'mediumDate'"></span>-->
+            <!--by-->
+            <!--<span data-ng-bind="recipegroup.owner.displayName"></span>-->
+        <!--</em>-->
+    <!--</small>-->
 </section>

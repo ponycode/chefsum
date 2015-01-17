@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('recipegroup').controller('RecipegroupController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipegroup', 
-	function( $scope, $stateParams, $location, Authentication, Recipegroup) {
+angular.module('recipegroup').controller('RecipegroupController', ['$scope', '$stateParams', '$location', 'Authentication', 'Recipegroup',  
+	function( $scope, $stateParams, $location, Authentication, Recipegroup ) {
 		$scope.authentication = Authentication;
 
 		$scope.find = function() {
@@ -24,6 +24,21 @@ angular.module('recipegroup').controller('RecipegroupController', ['$scope', '$s
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+
+		$scope.addRecipe = function(){
+
+			$scope.recipegroup.recipes = $scope.recipegroup.recipes || [];
+			$scope.recipegroup.recipes.push({
+				name: "TEST"
+			});
+			console.log( $scope.recipegroup );
+			
+			// TODO: goto server, insert empty recipe, return id
+			
+			// TODO: insert recipe HTML into body
+			
+			
 		};
 
 	}

@@ -25,6 +25,6 @@ angular.module('recipes').controller('RecipesController', ['$scope', '$statePara
 				$scope.error = errorResponse.data.message;
 			});
 		};
-
+		
 	}
 ]);
