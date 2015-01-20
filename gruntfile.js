@@ -1,14 +1,15 @@
 'use strict';
 
 module.exports = function(grunt) {
-	// Unified Watch Object
+
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
-		mochaTests: ['app/tests/**/*.js']
+		mochaServerTests: ['app/tests/server/**/*.js'],
+		mochaUnitTests: ['/app/tests/unit/**/*.js']
 	};
 
 	// Project Configuration
@@ -129,10 +130,18 @@ module.exports = function(grunt) {
 			}
 		},
 		mochaTest: {
-			src: watchFiles.mochaTests,
-			options: {
-				reporter: 'spec',
-				require: 'server.js'
+			server:{
+				src: watchFiles.mochaServerTests,
+				options: {
+					reporter: 'spec',
+					require: 'server.js'
+				}
+			},
+			unit:{
+				src: watchFiles.mochaUnitTests,
+				options: {
+					reporter: 'spec'
+				}
 			}
 		},
 		karma: {
@@ -173,5 +182,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
 
 	// Test task.
-	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+	grunt.registerTask('test', ['env:test', 'mochaTest:server', 'karma:unit']);
+	grunt.registerTask('unittest', ['env:test', 'mochaTest:unit']);
+
 };
