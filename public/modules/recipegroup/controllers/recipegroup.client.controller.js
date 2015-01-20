@@ -26,19 +26,33 @@ angular.module('recipegroup').controller('RecipegroupController', ['$scope', '$s
 			});
 		};
 
+		$scope.addIngredient = function( $event ){
+			
+			var ingredient = {
+				name: $scope.ingredient
+			};
+			var recipeId = $event.target.id;
+			
+			console.log( $event, recipeId, $scope.recipe );
+			$scope.recipes[recipeId].ingredients.push( ingredient );
+		};
+		
 		$scope.addRecipe = function(){
 
-			$scope.recipegroup.recipes = $scope.recipegroup.recipes || [];
-			$scope.recipegroup.recipes.push({
-				name: "TEST"
-			});
-			console.log( $scope.recipegroup );
+			$scope.recipes = $scope.recipes || {};
+			
+			var recipeId = new Date().getTime() + "AB";
+			var recipe = {
+				recipeId: recipeId,
+				name: $scope.recipeTitle,
+				ingredients: []
+			};
+			$scope.recipes[recipeId] = recipe
+			
+			$scope.recipeTitle = '';
 			
 			// TODO: goto server, insert empty recipe, return id
-			
-			// TODO: insert recipe HTML into body
-			
-			
+	
 		};
 
 	}
